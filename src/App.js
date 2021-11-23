@@ -7,7 +7,19 @@ import Filter from "./components/Filter/Filter";
 import Navbar from "./components/Navbar/Navbar";
 import Pagination from "./components/Pagination/Pagination";
 
+
 function App() {
+
+  let api = `https://rickandmortyapi.com/api/character/?page=1`;
+
+  useEffect(() => {
+    (async function() {
+      let data = await fetch(api).then((res) => res.json());
+      console.log(data);
+    })();
+  }, [api]);
+
+  
   return (
     <div className="App">
       <h1 className="text-center mb-3">Characters</h1>
