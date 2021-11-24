@@ -12,10 +12,13 @@ function App() {
 
   let api = `https://rickandmortyapi.com/api/character/?page=1`;
 
+  let [fetchedData, updateFetchedData] = useState([]);
+  let { info, results } = fetchedData;
+
   useEffect(() => {
     (async function() {
       let data = await fetch(api).then((res) => res.json());
-      console.log(data);
+      updateFetchedData(data);
     })();
   }, [api]);
 
@@ -28,7 +31,7 @@ function App() {
           Filter component will be placed here
           <div className="col-lg-8 col-12">
             <div className="row">
-              Card component will be placed here
+              <Card results={results}/>
             </div>
           </div>
         </div>
